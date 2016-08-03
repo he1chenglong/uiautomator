@@ -56,7 +56,7 @@ def getPhoneNumber(pid,token):
 
 def getVerifyCode(phonenumber,projectid,token):
     # http://api.51ym.me/UserInterface.aspx?action=getsms&mobile=电话号码&itemid=项目编号&token=token
-    for i in range(0,20):
+    for i in range(0,50):
         cmd='http://api.51ym.me/UserInterface.aspx?action=getsms&mobile=%s&itemid=%s&token=%s'%(phonenumber,projectid,token)
         vc=requests.get(cmd)
         print vc.text
@@ -155,7 +155,8 @@ def main():
             requestVerfiyCode(pnum)
         else:
             vcode=getVerifyCode(pnum,projectId,token)
-            break
+            if vcode != '0000':
+                break
 
 
     fillVerifycode(vcode)
