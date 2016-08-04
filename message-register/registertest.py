@@ -39,7 +39,7 @@ if __name__ == '__main__':
             mes.phoneBlacklist()
             mes.releasePhoneNumber()
             pnum=mes.getPhoneNumber()
-            mes.requestVerfiyCode(pnum)
+            kuhua.requestVerfiyCode(pnum)
         else:
             vcode=mes.getVerifyCode()
             if vcode != '0000':

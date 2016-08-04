@@ -5,6 +5,7 @@ from uiautomator import device as d
 import re
 import os
 import random
+from deviceinfo.deviceinfo import deviceinfo
 
 hongbaosuoping='462'
 yaoqingmahongbaosuoping='12324'
@@ -23,6 +24,8 @@ class kuhua(object):
         print 'kuhua ...'
 
     def firstdo(self):
+        #deviceinfo.startApp('com.coohuaclient/.ui.activity.SplashActivity')
+        time.sleep(5)
         try:
             #向右滑动解锁
             # d(resourceId='com.coohuaclient:id/tv_slide_horizontal_guide').drag.to(resourceId='com.coohuaclient:id/view_hand',steps=100)
