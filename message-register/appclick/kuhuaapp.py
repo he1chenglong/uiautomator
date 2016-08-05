@@ -13,6 +13,11 @@ kuhua='821'
 kuhuayaoqingma='827155608'
 
 def textclick(ctext):
+    '''
+    点击 文字
+    :param ctext:
+    :return:
+    '''
     try:
         d(text=ctext).click()
     except:
@@ -24,6 +29,10 @@ class kuhua(object):
         print 'kuhua ...'
 
     def firstdo(self):
+        '''
+        app 进入输入手机号界面前的准备操作
+        :return:
+        '''
         #deviceinfo.startApp('com.coohuaclient/.ui.activity.SplashActivity')
         time.sleep(5)
         try:
@@ -48,10 +57,16 @@ class kuhua(object):
             print Exception
 
     def requestVerfiyCode(self,phonenum):
-
+        '''
+        请求 验证码 操作
+        :param phonenum:
+        :return:
+        '''
         try:
             print "phonenum:" + phonenum
+            # 清空手机号
             d(resourceId='com.coohuaclient:id/et_phone_num').clear_text()
+            #输入手机号
             d(resourceId='com.coohuaclient:id/et_phone_num').set_text(phonenum)
             textclick(u'获取验证码')
             time.sleep(2)
@@ -59,16 +74,29 @@ class kuhua(object):
             print Exception
 
     def isPhoneRegisted(self):
+        '''
+        判断手机号码是否被注册过
+        :return:
+        '''
         if  d(resourceId='com.coohuaclient:id/btn_get_verify_code').info['text']==u'获取验证码' :
             return True
         else:
             return False
 
     def fillVerifycode(self,verifycode):
+        '''
+        填写手机验证码
+        :param verifycode:
+        :return:
+        '''
         d(resourceId='com.coohuaclient:id/et_verify_code').set_text(verifycode)
         textclick(u'下一步')
 
     def continueRegiste(self):
+        '''
+        填写 密码 邀请码  等信息 完成注册
+        :return: 密码
+        '''
         password = ''.join(map(lambda xx:(hex(ord(xx))[2:]),os.urandom(4)))
         print "password:" +password
         d(resourceId='com.coohuaclient:id/edt_password').set_text(password)

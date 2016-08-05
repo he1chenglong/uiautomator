@@ -18,7 +18,7 @@ class TestMessage(unittest.TestCase):
 
     def test_init(self):
         print u'test message __init__ ...'
-        self.m=m51ym('821')
+        self.m=m51ym()
 
     def test_login(self):
         self.m.login()
